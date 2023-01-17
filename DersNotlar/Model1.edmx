@@ -1,0 +1,1353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="YeniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banka">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="20" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sehir" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Bankas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar(max)" />
+          <Property Name="Telefon" Type="nvarchar(max)" />
+          <Property Name="Sehir" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Calisan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="20" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="20" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sehir" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="departments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="workplaceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="offices">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="workplaceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personnels">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="surname" Type="varchar" MaxLength="50" />
+          <Property Name="mail" Type="varchar" MaxLength="50" />
+          <Property Name="officeId" Type="int" Nullable="false" />
+          <Property Name="positionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="positions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="departmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STDers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kredi" Type="int" Nullable="false" />
+          <Property Name="Ogretmen" Type="int" />
+          <Property Name="Bolum" Type="int" Nullable="false" />
+          <Property Name="Devamsizlik" Type="int" Nullable="false" />
+          <Property Name="ToplamHafta" Type="int" Nullable="false" />
+          <Property Name="BaslangicTarih" Type="datetime" />
+          <Property Name="BitisTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="STDersTakip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ogrenci" Type="int" Nullable="false" />
+          <Property Name="Ders" Type="int" Nullable="false" />
+          <Property Name="DersTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="STOgrenci">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumTarih" Type="datetime" />
+          <Property Name="GirisTarih" Type="int" />
+          <Property Name="Bolum" Type="int" Nullable="false" />
+          <Property Name="Gsm" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="STPersonel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumTarih" Type="datetime" />
+          <Property Name="GirisTarih" Type="int" />
+          <Property Name="Bolum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sube">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="40" />
+          <Property Name="Telefon" Type="char" MaxLength="20" />
+          <Property Name="BankaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="workplaces">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="workStationReservations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="officeId" Type="int" Nullable="false" />
+          <Property Name="workStationId" Type="int" Nullable="false" />
+          <Property Name="personnelId" Type="int" Nullable="false" />
+          <Property Name="startTime" Type="datetime" Nullable="false" />
+          <Property Name="endTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="workStations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="officeId" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Yonetici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" />
+          <Property Name="Description" Type="nvarchar" MaxLength="40" />
+          <Property Name="YoneticiTipi" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_departments_workplaces">
+          <End Role="workplaces" Type="Self.workplaces" Multiplicity="1" />
+          <End Role="departments" Type="Self.departments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="workplaces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="departments">
+              <PropertyRef Name="workplaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_offices_workplaces">
+          <End Role="workplaces" Type="Self.workplaces" Multiplicity="1" />
+          <End Role="offices" Type="Self.offices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="workplaces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="offices">
+              <PropertyRef Name="workplaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_positions_departments">
+          <End Role="departments" Type="Self.departments" Multiplicity="1" />
+          <End Role="positions" Type="Self.positions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="positions">
+              <PropertyRef Name="departmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_workStations_offices">
+          <End Role="offices" Type="Self.offices" Multiplicity="1" />
+          <End Role="workStations" Type="Self.workStations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="offices">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="workStations">
+              <PropertyRef Name="officeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="personnel_office">
+          <End Role="offices" Type="Self.offices" Multiplicity="1" />
+          <End Role="personnels" Type="Self.personnels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="offices">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnels">
+              <PropertyRef Name="officeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="personnel_position">
+          <End Role="positions" Type="Self.positions" Multiplicity="1" />
+          <End Role="personnels" Type="Self.personnels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="positions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnels">
+              <PropertyRef Name="positionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STDers_FK">
+          <End Role="STPersonel" Type="Self.STPersonel" Multiplicity="0..1" />
+          <End Role="STDers" Type="Self.STDers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STPersonel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="STDers">
+              <PropertyRef Name="Ogretmen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STDersTakip_FK_1">
+          <End Role="STOgrenci" Type="Self.STOgrenci" Multiplicity="1" />
+          <End Role="STDersTakip" Type="Self.STDersTakip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STOgrenci">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="STDersTakip">
+              <PropertyRef Name="Ogrenci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STDersTakip_FK_2">
+          <End Role="STDers" Type="Self.STDers" Multiplicity="1" />
+          <End Role="STDersTakip" Type="Self.STDersTakip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STDers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="STDersTakip">
+              <PropertyRef Name="Ders" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sube_FK">
+          <End Role="Banka" Type="Self.Banka" Multiplicity="1" />
+          <End Role="Sube" Type="Self.Sube" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banka">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sube">
+              <PropertyRef Name="BankaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="workStationReservation_office">
+          <End Role="offices" Type="Self.offices" Multiplicity="1" />
+          <End Role="workStationReservations" Type="Self.workStationReservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="offices">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="workStationReservations">
+              <PropertyRef Name="officeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="workStationReservation_personnel">
+          <End Role="personnels" Type="Self.personnels" Multiplicity="1" />
+          <End Role="workStationReservations" Type="Self.workStationReservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personnels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="workStationReservations">
+              <PropertyRef Name="personnelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="workStationReservation_workStation">
+          <End Role="workStations" Type="Self.workStations" Multiplicity="1" />
+          <End Role="workStationReservations" Type="Self.workStationReservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="workStations">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="workStationReservations">
+              <PropertyRef Name="workStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="BankaSube" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BankaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BankaSubeler" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spInsertOrUpdatedepartments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="workplaceId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInsertOrUpdateoffices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="workplaceId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInsertOrUpdatepersonnels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="surname" Type="varchar" Mode="In" />
+          <Parameter Name="mail" Type="varchar" Mode="In" />
+          <Parameter Name="officeId" Type="int" Mode="In" />
+          <Parameter Name="positionId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInsertOrUpdatepositions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="departmentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInsertOrUpdateworkplaces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertOrUpdateworkStationReservations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="officeId" Type="int" Mode="In" />
+          <Parameter Name="workStationId" Type="int" Mode="In" />
+          <Parameter Name="personnelId" Type="int" Mode="In" />
+          <Parameter Name="startTime" Type="date" Mode="In" />
+          <Parameter Name="endTime" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spInsertOrUpdateworkStations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="officeId" Type="int" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spSelectWorkStationReservationsByOfficeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="officeId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="YeniModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banka" EntityType="Self.Banka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bankas" EntityType="Self.Bankas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calisan" EntityType="Self.Calisan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="departments" EntityType="Self.departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="offices" EntityType="Self.offices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personnels" EntityType="Self.personnels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="positions" EntityType="Self.positions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STDers" EntityType="Self.STDers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STDersTakip" EntityType="Self.STDersTakip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STOgrenci" EntityType="Self.STOgrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STPersonel" EntityType="Self.STPersonel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sube" EntityType="Self.Sube" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="workplaces" EntityType="Self.workplaces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="workStationReservations" EntityType="Self.workStationReservations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="workStations" EntityType="Self.workStations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yonetici" EntityType="Self.Yonetici" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_departments_workplaces" Association="Self.FK_departments_workplaces">
+            <End Role="workplaces" EntitySet="workplaces" />
+            <End Role="departments" EntitySet="departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_offices_workplaces" Association="Self.FK_offices_workplaces">
+            <End Role="workplaces" EntitySet="workplaces" />
+            <End Role="offices" EntitySet="offices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_positions_departments" Association="Self.FK_positions_departments">
+            <End Role="departments" EntitySet="departments" />
+            <End Role="positions" EntitySet="positions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_workStations_offices" Association="Self.FK_workStations_offices">
+            <End Role="offices" EntitySet="offices" />
+            <End Role="workStations" EntitySet="workStations" />
+          </AssociationSet>
+          <AssociationSet Name="personnel_office" Association="Self.personnel_office">
+            <End Role="offices" EntitySet="offices" />
+            <End Role="personnels" EntitySet="personnels" />
+          </AssociationSet>
+          <AssociationSet Name="personnel_position" Association="Self.personnel_position">
+            <End Role="positions" EntitySet="positions" />
+            <End Role="personnels" EntitySet="personnels" />
+          </AssociationSet>
+          <AssociationSet Name="STDers_FK" Association="Self.STDers_FK">
+            <End Role="STPersonel" EntitySet="STPersonel" />
+            <End Role="STDers" EntitySet="STDers" />
+          </AssociationSet>
+          <AssociationSet Name="STDersTakip_FK_1" Association="Self.STDersTakip_FK_1">
+            <End Role="STOgrenci" EntitySet="STOgrenci" />
+            <End Role="STDersTakip" EntitySet="STDersTakip" />
+          </AssociationSet>
+          <AssociationSet Name="STDersTakip_FK_2" Association="Self.STDersTakip_FK_2">
+            <End Role="STDers" EntitySet="STDers" />
+            <End Role="STDersTakip" EntitySet="STDersTakip" />
+          </AssociationSet>
+          <AssociationSet Name="Sube_FK" Association="Self.Sube_FK">
+            <End Role="Banka" EntitySet="Banka" />
+            <End Role="Sube" EntitySet="Sube" />
+          </AssociationSet>
+          <AssociationSet Name="workStationReservation_office" Association="Self.workStationReservation_office">
+            <End Role="offices" EntitySet="offices" />
+            <End Role="workStationReservations" EntitySet="workStationReservations" />
+          </AssociationSet>
+          <AssociationSet Name="workStationReservation_personnel" Association="Self.workStationReservation_personnel">
+            <End Role="personnels" EntitySet="personnels" />
+            <End Role="workStationReservations" EntitySet="workStationReservations" />
+          </AssociationSet>
+          <AssociationSet Name="workStationReservation_workStation" Association="Self.workStationReservation_workStation">
+            <End Role="workStations" EntitySet="workStations" />
+            <End Role="workStationReservations" EntitySet="workStationReservations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YeniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banka">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sehir" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Subes" Relationship="YeniModel.Sube_FK" FromRole="Banka" ToRole="Sube" />
+          </EntityType>
+        <EntityType Name="Bankas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sehir" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Calisan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sehir" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="departments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="workplaceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="workplaces" Relationship="Self.FK_departments_workplaces" FromRole="departments" ToRole="workplaces" />
+          <NavigationProperty Name="positions" Relationship="Self.FK_positions_departments" FromRole="departments" ToRole="positions" />
+        </EntityType>
+        <EntityType Name="offices">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="workplaceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="workplaces" Relationship="Self.FK_offices_workplaces" FromRole="offices" ToRole="workplaces" />
+          <NavigationProperty Name="workStations" Relationship="Self.FK_workStations_offices" FromRole="offices" ToRole="workStations" />
+          <NavigationProperty Name="personnels" Relationship="Self.personnel_office" FromRole="offices" ToRole="personnels" />
+          <NavigationProperty Name="workStationReservations" Relationship="Self.workStationReservation_office" FromRole="offices" ToRole="workStationReservations" />
+        </EntityType>
+        <EntityType Name="personnels">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="officeId" Type="Int32" Nullable="false" />
+          <Property Name="positionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="offices" Relationship="Self.personnel_office" FromRole="personnels" ToRole="offices" />
+          <NavigationProperty Name="positions" Relationship="Self.personnel_position" FromRole="personnels" ToRole="positions" />
+          <NavigationProperty Name="workStationReservations" Relationship="Self.workStationReservation_personnel" FromRole="personnels" ToRole="workStationReservations" />
+        </EntityType>
+        <EntityType Name="positions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="departmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="departments" Relationship="Self.FK_positions_departments" FromRole="positions" ToRole="departments" />
+          <NavigationProperty Name="personnels" Relationship="Self.personnel_position" FromRole="positions" ToRole="personnels" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="workplaces">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="departments" Relationship="Self.FK_departments_workplaces" FromRole="workplaces" ToRole="departments" />
+          <NavigationProperty Name="offices" Relationship="Self.FK_offices_workplaces" FromRole="workplaces" ToRole="offices" />
+        </EntityType>
+        <EntityType Name="workStationReservations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="officeId" Type="Int32" Nullable="false" />
+          <Property Name="workStationId" Type="Int32" Nullable="false" />
+          <Property Name="personnelId" Type="Int32" Nullable="false" />
+          <Property Name="startTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="endTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="offices" Relationship="Self.workStationReservation_office" FromRole="workStationReservations" ToRole="offices" />
+          <NavigationProperty Name="personnels" Relationship="Self.workStationReservation_personnel" FromRole="workStationReservations" ToRole="personnels" />
+          <NavigationProperty Name="workStations" Relationship="Self.workStationReservation_workStation" FromRole="workStationReservations" ToRole="workStations" />
+        </EntityType>
+        <EntityType Name="workStations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="officeId" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="offices" Relationship="Self.FK_workStations_offices" FromRole="workStations" ToRole="offices" />
+          <NavigationProperty Name="workStationReservations" Relationship="Self.workStationReservation_workStation" FromRole="workStations" ToRole="workStationReservations" />
+        </EntityType>
+        <Association Name="FK_departments_workplaces">
+          <End Role="workplaces" Type="Self.workplaces" Multiplicity="1" />
+          <End Role="departments" Type="Self.departments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="workplaces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="departments">
+              <PropertyRef Name="workplaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_positions_departments">
+          <End Role="departments" Type="Self.departments" Multiplicity="1" />
+          <End Role="positions" Type="Self.positions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="positions">
+              <PropertyRef Name="departmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_offices_workplaces">
+          <End Role="workplaces" Type="Self.workplaces" Multiplicity="1" />
+          <End Role="offices" Type="Self.offices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="workplaces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="offices">
+              <PropertyRef Name="workplaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_workStations_offices">
+          <End Role="offices" Type="Self.offices" Multiplicity="1" />
+          <End Role="workStations" Type="Self.workStations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="offices">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="workStations">
+              <PropertyRef Name="officeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="personnel_office">
+          <End Role="offices" Type="Self.offices" Multiplicity="1" />
+          <End Role="personnels" Type="Self.personnels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="offices">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnels">
+              <PropertyRef Name="officeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="workStationReservation_office">
+          <End Role="offices" Type="Self.offices" Multiplicity="1" />
+          <End Role="workStationReservations" Type="Self.workStationReservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="offices">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="workStationReservations">
+              <PropertyRef Name="officeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="personnel_position">
+          <End Role="positions" Type="Self.positions" Multiplicity="1" />
+          <End Role="personnels" Type="Self.personnels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="positions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnels">
+              <PropertyRef Name="positionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="workStationReservation_personnel">
+          <End Role="personnels" Type="Self.personnels" Multiplicity="1" />
+          <End Role="workStationReservations" Type="Self.workStationReservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personnels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="workStationReservations">
+              <PropertyRef Name="personnelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="workStationReservation_workStation">
+          <End Role="workStations" Type="Self.workStations" Multiplicity="1" />
+          <End Role="workStationReservations" Type="Self.workStationReservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="workStations">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="workStationReservations">
+              <PropertyRef Name="workStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YeniEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Banka" EntityType="Self.Banka" />
+          <EntitySet Name="Bankas" EntityType="Self.Bankas" />
+          <EntitySet Name="Calisan" EntityType="Self.Calisan" />
+          <EntitySet Name="departments" EntityType="Self.departments" />
+          <EntitySet Name="offices" EntityType="Self.offices" />
+          <EntitySet Name="personnels" EntityType="Self.personnels" />
+          <EntitySet Name="positions" EntityType="Self.positions" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="workplaces" EntityType="Self.workplaces" />
+          <EntitySet Name="workStationReservations" EntityType="Self.workStationReservations" />
+          <EntitySet Name="workStations" EntityType="Self.workStations" />
+          <AssociationSet Name="FK_departments_workplaces" Association="Self.FK_departments_workplaces">
+            <End Role="workplaces" EntitySet="workplaces" />
+            <End Role="departments" EntitySet="departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_positions_departments" Association="Self.FK_positions_departments">
+            <End Role="departments" EntitySet="departments" />
+            <End Role="positions" EntitySet="positions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_offices_workplaces" Association="Self.FK_offices_workplaces">
+            <End Role="workplaces" EntitySet="workplaces" />
+            <End Role="offices" EntitySet="offices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_workStations_offices" Association="Self.FK_workStations_offices">
+            <End Role="offices" EntitySet="offices" />
+            <End Role="workStations" EntitySet="workStations" />
+          </AssociationSet>
+          <AssociationSet Name="personnel_office" Association="Self.personnel_office">
+            <End Role="offices" EntitySet="offices" />
+            <End Role="personnels" EntitySet="personnels" />
+          </AssociationSet>
+          <AssociationSet Name="workStationReservation_office" Association="Self.workStationReservation_office">
+            <End Role="offices" EntitySet="offices" />
+            <End Role="workStationReservations" EntitySet="workStationReservations" />
+          </AssociationSet>
+          <AssociationSet Name="personnel_position" Association="Self.personnel_position">
+            <End Role="positions" EntitySet="positions" />
+            <End Role="personnels" EntitySet="personnels" />
+          </AssociationSet>
+          <AssociationSet Name="workStationReservation_personnel" Association="Self.workStationReservation_personnel">
+            <End Role="personnels" EntitySet="personnels" />
+            <End Role="workStationReservations" EntitySet="workStationReservations" />
+          </AssociationSet>
+          <AssociationSet Name="workStationReservation_workStation" Association="Self.workStationReservation_workStation">
+            <End Role="workStations" EntitySet="workStations" />
+            <End Role="workStationReservations" EntitySet="workStationReservations" />
+          </AssociationSet>
+          <EntitySet Name="Yonetici" EntityType="YeniModel.Yonetici" />
+          <FunctionImport Name="BankaSube">
+          <Parameter Name="BankaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="BankaSubeler" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(YeniModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(YeniModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="spInsertOrUpdatedepartments" ReturnType="Collection(YeniModel.spInsertOrUpdatedepartments_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="workplaceId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertOrUpdateoffices" ReturnType="Collection(YeniModel.spInsertOrUpdateoffices_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="workplaceId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertOrUpdatepersonnels" ReturnType="Collection(YeniModel.spInsertOrUpdatepersonnels_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="surname" Mode="In" Type="String" />
+            <Parameter Name="mail" Mode="In" Type="String" />
+            <Parameter Name="officeId" Mode="In" Type="Int32" />
+            <Parameter Name="positionId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertOrUpdatepositions" ReturnType="Collection(YeniModel.spInsertOrUpdatepositions_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="departmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertOrUpdateworkplaces" ReturnType="Collection(YeniModel.spInsertOrUpdateworkplaces_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="title" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertOrUpdateworkStationReservations" ReturnType="Collection(YeniModel.spInsertOrUpdateworkStationReservations_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="officeId" Mode="In" Type="Int32" />
+            <Parameter Name="workStationId" Mode="In" Type="Int32" />
+            <Parameter Name="personnelId" Mode="In" Type="Int32" />
+            <Parameter Name="startTime" Mode="In" Type="DateTime" />
+            <Parameter Name="endTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertOrUpdateworkStations" ReturnType="Collection(YeniModel.spInsertOrUpdateworkStations_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="officeId" Mode="In" Type="Int32" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSelectWorkStationReservationsByOfficeId" ReturnType="Collection(YeniModel.spSelectWorkStationReservationsByOfficeId_Result)">
+          <Parameter Name="officeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="STDers" EntityType="YeniModel.STDer" />
+          <EntitySet Name="STDersTakips" EntityType="YeniModel.STDersTakip" />
+          <EntitySet Name="STOgrencis" EntityType="YeniModel.STOgrenci" />
+          <EntitySet Name="STPersonels" EntityType="YeniModel.STPersonel" />
+          <EntitySet Name="Subes" EntityType="YeniModel.Sube" />
+          <AssociationSet Name="Sube_FK" Association="YeniModel.Sube_FK">
+            <End Role="Banka" EntitySet="Banka" />
+            <End Role="Sube" EntitySet="Subes" />
+          </AssociationSet>
+          <AssociationSet Name="STDers_FK" Association="YeniModel.STDers_FK">
+            <End Role="STPersonel" EntitySet="STPersonels" />
+            <End Role="STDer" EntitySet="STDers" />
+          </AssociationSet>
+          <AssociationSet Name="STDersTakip_FK_2" Association="YeniModel.STDersTakip_FK_2">
+            <End Role="STDer" EntitySet="STDers" />
+            <End Role="STDersTakip" EntitySet="STDersTakips" />
+          </AssociationSet>
+          <AssociationSet Name="STDersTakip_FK_1" Association="YeniModel.STDersTakip_FK_1">
+            <End Role="STOgrenci" EntitySet="STOgrencis" />
+            <End Role="STDersTakip" EntitySet="STDersTakips" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Yonetici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="YoneticiTipi" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spInsertOrUpdatedepartments_Result">
+          <Property Type="Int32" Name="ResultCode" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="spInsertOrUpdateoffices_Result">
+          <Property Type="Int32" Name="ResultCode" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="spInsertOrUpdatepersonnels_Result">
+          <Property Type="Int32" Name="ResultCode" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="spInsertOrUpdatepositions_Result">
+          <Property Type="Int32" Name="ResultCode" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="spInsertOrUpdateworkplaces_Result">
+          <Property Type="Int32" Name="ResultCode" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="spInsertOrUpdateworkStationReservations_Result">
+          <Property Type="Int32" Name="ResultCode" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="spInsertOrUpdateworkStations_Result">
+          <Property Type="Int32" Name="ResultCode" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="spSelectWorkStationReservationsByOfficeId_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="personelName" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="officeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="position" Nullable="true" MaxLength="102" />
+        </ComplexType>
+        <EntityType Name="STDer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kredi" Type="Int32" Nullable="false" />
+          <Property Name="Ogretmen" Type="Int32" />
+          <Property Name="Bolum" Type="Int32" Nullable="false" />
+          <Property Name="Devamsizlik" Type="Int32" Nullable="false" />
+          <Property Name="ToplamHafta" Type="Int32" Nullable="false" />
+          <Property Name="BaslangicTarih" Type="DateTime" Precision="3" />
+          <Property Name="BitisTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="STPersonel" Relationship="YeniModel.STDers_FK" FromRole="STDer" ToRole="STPersonel" />
+          <NavigationProperty Name="STDersTakips" Relationship="YeniModel.STDersTakip_FK_2" FromRole="STDer" ToRole="STDersTakip" />
+        </EntityType>
+        <EntityType Name="STDersTakip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ogrenci" Type="Int32" Nullable="false" />
+          <Property Name="Ders" Type="Int32" Nullable="false" />
+          <Property Name="DersTarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="STDer" Relationship="YeniModel.STDersTakip_FK_2" FromRole="STDersTakip" ToRole="STDer" />
+          <NavigationProperty Name="STOgrenci" Relationship="YeniModel.STDersTakip_FK_1" FromRole="STDersTakip" ToRole="STOgrenci" />
+        </EntityType>
+        <EntityType Name="STOgrenci">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumTarih" Type="DateTime" Precision="3" />
+          <Property Name="GirisTarih" Type="Int32" />
+          <Property Name="Bolum" Type="Int32" Nullable="false" />
+          <Property Name="Gsm" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="STDersTakips" Relationship="YeniModel.STDersTakip_FK_1" FromRole="STOgrenci" ToRole="STDersTakip" />
+        </EntityType>
+        <EntityType Name="STPersonel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumTarih" Type="DateTime" Precision="3" />
+          <Property Name="GirisTarih" Type="Int32" />
+          <Property Name="Bolum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="STDers" Relationship="YeniModel.STDers_FK" FromRole="STPersonel" ToRole="STDer" />
+        </EntityType>
+        <EntityType Name="Sube">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="BankaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Banka" Relationship="YeniModel.Sube_FK" FromRole="Sube" ToRole="Banka" />
+        </EntityType>
+        <Association Name="Sube_FK">
+          <End Type="YeniModel.Banka" Role="Banka" Multiplicity="1" />
+          <End Type="YeniModel.Sube" Role="Sube" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banka">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sube">
+              <PropertyRef Name="BankaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STDers_FK">
+          <End Type="YeniModel.STPersonel" Role="STPersonel" Multiplicity="0..1" />
+          <End Type="YeniModel.STDer" Role="STDer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STPersonel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="STDer">
+              <PropertyRef Name="Ogretmen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STDersTakip_FK_2">
+          <End Type="YeniModel.STDer" Role="STDer" Multiplicity="1" />
+          <End Type="YeniModel.STDersTakip" Role="STDersTakip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STDer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="STDersTakip">
+              <PropertyRef Name="Ders" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STDersTakip_FK_1">
+          <End Type="YeniModel.STOgrenci" Role="STOgrenci" Multiplicity="1" />
+          <End Type="YeniModel.STDersTakip" Role="STDersTakip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STOgrenci">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="STDersTakip">
+              <PropertyRef Name="Ogrenci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YeniModelStoreContainer" CdmEntityContainer="YeniEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="YeniModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banka">
+            <EntityTypeMapping TypeName="YeniModel.Banka">
+              <MappingFragment StoreEntitySet="Banka">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bankas">
+            <EntityTypeMapping TypeName="YeniModel.Bankas">
+              <MappingFragment StoreEntitySet="Bankas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calisan">
+            <EntityTypeMapping TypeName="YeniModel.Calisan">
+              <MappingFragment StoreEntitySet="Calisan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departments">
+            <EntityTypeMapping TypeName="YeniModel.departments">
+              <MappingFragment StoreEntitySet="departments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="workplaceId" ColumnName="workplaceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="offices">
+            <EntityTypeMapping TypeName="YeniModel.offices">
+              <MappingFragment StoreEntitySet="offices">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="workplaceId" ColumnName="workplaceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personnels">
+            <EntityTypeMapping TypeName="YeniModel.personnels">
+              <MappingFragment StoreEntitySet="personnels">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="officeId" ColumnName="officeId" />
+                <ScalarProperty Name="positionId" ColumnName="positionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="positions">
+            <EntityTypeMapping TypeName="YeniModel.positions">
+              <MappingFragment StoreEntitySet="positions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="departmentId" ColumnName="departmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="YeniModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workplaces">
+            <EntityTypeMapping TypeName="YeniModel.workplaces">
+              <MappingFragment StoreEntitySet="workplaces">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workStationReservations">
+            <EntityTypeMapping TypeName="YeniModel.workStationReservations">
+              <MappingFragment StoreEntitySet="workStationReservations">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="officeId" ColumnName="officeId" />
+                <ScalarProperty Name="workStationId" ColumnName="workStationId" />
+                <ScalarProperty Name="personnelId" ColumnName="personnelId" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workStations">
+            <EntityTypeMapping TypeName="YeniModel.workStations">
+              <MappingFragment StoreEntitySet="workStations">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="officeId" ColumnName="officeId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yonetici">
+            <EntityTypeMapping TypeName="YeniModel.Yonetici">
+              <MappingFragment StoreEntitySet="Yonetici">
+                <ScalarProperty Name="YoneticiTipi" ColumnName="YoneticiTipi" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BankaSube" FunctionName="YeniModel.Store.BankaSube" />
+          <FunctionImportMapping FunctionImportName="BankaSubeler" FunctionName="YeniModel.Store.BankaSubeler" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="YeniModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="YeniModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="YeniModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="YeniModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YeniModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="YeniModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YeniModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="YeniModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="YeniModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="spInsertOrUpdatedepartments" FunctionName="YeniModel.Store.spInsertOrUpdatedepartments">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YeniModel.spInsertOrUpdatedepartments_Result">
+                <ScalarProperty Name="ResultCode" ColumnName="ResultCode" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spInsertOrUpdateoffices" FunctionName="YeniModel.Store.spInsertOrUpdateoffices">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YeniModel.spInsertOrUpdateoffices_Result">
+                <ScalarProperty Name="ResultCode" ColumnName="ResultCode" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spInsertOrUpdatepersonnels" FunctionName="YeniModel.Store.spInsertOrUpdatepersonnels">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YeniModel.spInsertOrUpdatepersonnels_Result">
+                <ScalarProperty Name="ResultCode" ColumnName="ResultCode" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spInsertOrUpdatepositions" FunctionName="YeniModel.Store.spInsertOrUpdatepositions">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YeniModel.spInsertOrUpdatepositions_Result">
+                <ScalarProperty Name="ResultCode" ColumnName="ResultCode" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spInsertOrUpdateworkplaces" FunctionName="YeniModel.Store.spInsertOrUpdateworkplaces">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YeniModel.spInsertOrUpdateworkplaces_Result">
+                <ScalarProperty Name="ResultCode" ColumnName="ResultCode" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spInsertOrUpdateworkStationReservations" FunctionName="YeniModel.Store.spInsertOrUpdateworkStationReservations">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YeniModel.spInsertOrUpdateworkStationReservations_Result">
+                <ScalarProperty Name="ResultCode" ColumnName="ResultCode" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spInsertOrUpdateworkStations" FunctionName="YeniModel.Store.spInsertOrUpdateworkStations">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YeniModel.spInsertOrUpdateworkStations_Result">
+                <ScalarProperty Name="ResultCode" ColumnName="ResultCode" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectWorkStationReservationsByOfficeId" FunctionName="YeniModel.Store.spSelectWorkStationReservationsByOfficeId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YeniModel.spSelectWorkStationReservationsByOfficeId_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="personelName" ColumnName="personelName" />
+                <ScalarProperty Name="officeName" ColumnName="officeName" />
+                <ScalarProperty Name="position" ColumnName="position" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="STDers">
+            <EntityTypeMapping TypeName="YeniModel.STDer">
+              <MappingFragment StoreEntitySet="STDers">
+                <ScalarProperty Name="BitisTarih" ColumnName="BitisTarih" />
+                <ScalarProperty Name="BaslangicTarih" ColumnName="BaslangicTarih" />
+                <ScalarProperty Name="ToplamHafta" ColumnName="ToplamHafta" />
+                <ScalarProperty Name="Devamsizlik" ColumnName="Devamsizlik" />
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+                <ScalarProperty Name="Ogretmen" ColumnName="Ogretmen" />
+                <ScalarProperty Name="Kredi" ColumnName="Kredi" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STDersTakips">
+            <EntityTypeMapping TypeName="YeniModel.STDersTakip">
+              <MappingFragment StoreEntitySet="STDersTakip">
+                <ScalarProperty Name="DersTarihi" ColumnName="DersTarihi" />
+                <ScalarProperty Name="Ders" ColumnName="Ders" />
+                <ScalarProperty Name="Ogrenci" ColumnName="Ogrenci" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STOgrencis">
+            <EntityTypeMapping TypeName="YeniModel.STOgrenci">
+              <MappingFragment StoreEntitySet="STOgrenci">
+                <ScalarProperty Name="Gsm" ColumnName="Gsm" />
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+                <ScalarProperty Name="GirisTarih" ColumnName="GirisTarih" />
+                <ScalarProperty Name="DogumTarih" ColumnName="DogumTarih" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STPersonels">
+            <EntityTypeMapping TypeName="YeniModel.STPersonel">
+              <MappingFragment StoreEntitySet="STPersonel">
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+                <ScalarProperty Name="GirisTarih" ColumnName="GirisTarih" />
+                <ScalarProperty Name="DogumTarih" ColumnName="DogumTarih" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subes">
+            <EntityTypeMapping TypeName="YeniModel.Sube">
+              <MappingFragment StoreEntitySet="Sube">
+                <ScalarProperty Name="BankaId" ColumnName="BankaId" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

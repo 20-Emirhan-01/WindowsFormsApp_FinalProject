@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af4387be88404359ad6b334475ab2043" Name="Diagram1">
+        <EntityTypeShape EntityType="YeniModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.Banka" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.Bankas" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.Calisan" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.departments" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.offices" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.personnels" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.positions" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.workplaces" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.workStationReservations" Width="1.5" PointX="9.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.workStations" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="YeniModel.FK_departments_workplaces" ManuallyRouted="false" />
+        <AssociationConnector Association="YeniModel.FK_positions_departments" ManuallyRouted="false" />
+        <AssociationConnector Association="YeniModel.FK_offices_workplaces" ManuallyRouted="false" />
+        <AssociationConnector Association="YeniModel.FK_workStations_offices" ManuallyRouted="false" />
+        <AssociationConnector Association="YeniModel.personnel_office" ManuallyRouted="false" />
+        <AssociationConnector Association="YeniModel.workStationReservation_office" ManuallyRouted="false" />
+        <AssociationConnector Association="YeniModel.personnel_position" ManuallyRouted="false" />
+        <AssociationConnector Association="YeniModel.workStationReservation_personnel" ManuallyRouted="false" />
+        <AssociationConnector Association="YeniModel.workStationReservation_workStation" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="YeniModel.Yonetici" Width="1.5" PointX="5.375" PointY="10.75" />
+        <EntityTypeShape EntityType="YeniModel.STDer" Width="1.5" PointX="8.375" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YeniModel.STDersTakip" Width="1.5" PointX="10.75" PointY="11.5" />
+        <EntityTypeShape EntityType="YeniModel.STOgrenci" Width="1.5" PointX="7.5" PointY="15" />
+        <EntityTypeShape EntityType="YeniModel.STPersonel" Width="1.5" PointX="4.75" PointY="13.875" />
+        <EntityTypeShape EntityType="YeniModel.Sube" Width="1.5" PointX="3" PointY="7.875" />
+        <AssociationConnector Association="YeniModel.Sube_FK" />
+        <AssociationConnector Association="YeniModel.STDers_FK" />
+        <AssociationConnector Association="YeniModel.STDersTakip_FK_2" />
+        <AssociationConnector Association="YeniModel.STDersTakip_FK_1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
